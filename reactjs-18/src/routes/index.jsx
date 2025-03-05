@@ -1,13 +1,15 @@
-import Logout from "@/pages/auth/logout";
-import Error from "@/pages/error";
-import Home from "@/pages/home";
-import { useAuth } from "@/providers/auth-provider";
-import { RouterProvider, createBrowserRouter } from "react-router-dom";
-import ErrorBoundary from "./error-boundary";
-import { ProtectedRoute } from "./protected-route";
+import Logout from "@/pages/auth/logout"
+import Error from "@/pages/error"
+import Home from "@/pages/home"
+import { createBrowserRouter, RouterProvider } from "react-router-dom"
+
+import { useAuth } from "@/providers/auth-provider"
+
+import ErrorBoundary from "./error-boundary"
+import { ProtectedRoute } from "./protected-route"
 
 const Routes = () => {
-  const { token } = useAuth();
+  const { token } = useAuth()
   // Define public routes accessible to all users
   const routesForPublic = [
     {
@@ -22,7 +24,7 @@ const Routes = () => {
       path: "*",
       element: "Page not found!",
     },
-  ];
+  ]
 
   // Define routes accessible only to authenticated users
   const routesForAuthenticatedOnly = [
@@ -44,7 +46,7 @@ const Routes = () => {
         },
       ],
     },
-  ];
+  ]
 
   // Define routes accessible only to non-authenticated users
   const routesForNotAuthenticatedOnly = [
@@ -55,8 +57,8 @@ const Routes = () => {
     {
       path: "/login",
       lazy: async () => {
-        let Login = await import("@/pages/auth/login");
-        return { Component: Login.default };
+        let Login = await import("@/pages/auth/login")
+        return { Component: Login.default }
       },
     },
     {
@@ -64,17 +66,17 @@ const Routes = () => {
       element: <Error />,
       errorElement: <ErrorBoundary />,
     },
-  ];
+  ]
 
   // Combine and conditionally include routes based on authentication status
   const router = createBrowserRouter([
     ...routesForPublic,
     ...(!token ? routesForNotAuthenticatedOnly : []),
     ...routesForAuthenticatedOnly,
-  ]);
+  ])
 
   // Provide the router configuration using RouterProvider
-  return <RouterProvider router={router} />;
-};
+  return <RouterProvider router={router} />
+}
 
-export default Routes;
+export default Routes

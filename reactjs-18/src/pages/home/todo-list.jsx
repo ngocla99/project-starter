@@ -1,15 +1,15 @@
+import { useState } from "react"
 import {
   createTodo,
   deleteTodo,
   getTodos,
   updateTodo,
-} from "@/api/services/todo";
-import { useState } from "react";
-import { useMutation, useQuery, useQueryClient } from "react-query";
+} from "@/api/services/todo"
+import { useMutation, useQuery, useQueryClient } from "react-query"
 
 const TodoList = () => {
-  const [newTodo, setNewTodo] = useState("");
-  const queryClient = useQueryClient();
+  const [newTodo, setNewTodo] = useState("")
+  const queryClient = useQueryClient()
 
   const {
     isLoading,
@@ -18,34 +18,34 @@ const TodoList = () => {
     data: todos,
   } = useQuery("todos", getTodos, {
     select: (data) => data.sort((a, b) => b.id - a.id),
-  });
+  })
 
   const addTodoMutation = useMutation(createTodo, {
     onSuccess: () => {
       // Invalidates cache and refetch
-      queryClient.invalidateQueries("todos");
+      queryClient.invalidateQueries("todos")
     },
-  });
+  })
 
   const updateTodoMutation = useMutation(updateTodo, {
     onSuccess: () => {
       // Invalidates cache and refetch
-      queryClient.invalidateQueries("todos");
+      queryClient.invalidateQueries("todos")
     },
-  });
+  })
 
   const deleteTodoMutation = useMutation(deleteTodo, {
     onSuccess: () => {
       // Invalidates cache and refetch
-      queryClient.invalidateQueries("todos");
+      queryClient.invalidateQueries("todos")
     },
-  });
+  })
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    addTodoMutation.mutate({ userId: 1, title: newTodo, completed: false });
-    setNewTodo("");
-  };
+    e.preventDefault()
+    addTodoMutation.mutate({ userId: 1, title: newTodo, completed: false })
+    setNewTodo("")
+  }
 
   const newItemSection = (
     <form onSubmit={handleSubmit}>
@@ -61,13 +61,13 @@ const TodoList = () => {
       </div>
       <button className="submit">Add</button>
     </form>
-  );
+  )
 
-  let content;
+  let content
   if (isLoading) {
-    content = <p>Loading...</p>;
+    content = <p>Loading...</p>
   } else if (isError) {
-    content = <p>{error.message}</p>;
+    content = <p>{error.message}</p>
   } else {
     content = todos.map((todo) => {
       return (
@@ -93,8 +93,8 @@ const TodoList = () => {
             Delete
           </button>
         </article>
-      );
-    });
+      )
+    })
   }
 
   return (
@@ -103,6 +103,6 @@ const TodoList = () => {
       {newItemSection}
       {content}
     </main>
-  );
-};
-export default TodoList;
+  )
+}
+export default TodoList

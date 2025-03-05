@@ -1,7 +1,7 @@
 export const sortOptions = [
   { label: "Price: Low to high", value: "price.asc" },
   { label: "Price: High to low", value: "price.desc" },
-];
+]
 
 export const productCategories = [
   {
@@ -27,7 +27,7 @@ export const productCategories = [
       },
     ],
   },
-];
+]
 
 export const productTags = [
   "new",
@@ -38,10 +38,10 @@ export const productTags = [
   "trending",
   "limited",
   "exclusive",
-];
+]
 
 export function getSubcategories() {
-  if (!category) return [];
+  if (!category) return []
 
   const subcategories =
     productCategories
@@ -49,7 +49,7 @@ export function getSubcategories() {
       ?.subcategories.map((s) => ({
         label: s.title,
         value: s.slug,
-      })) ?? [];
+      })) ?? []
 
-  return subcategories;
+  return subcategories
 }

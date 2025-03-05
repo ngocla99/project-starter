@@ -1,9 +1,10 @@
-import { Button } from "@/components/ui/button";
-import { Link, useRouteError } from "react-router-dom";
+import { Link, useRouteError } from "react-router-dom"
+
+import { Button } from "@/components/ui/button"
 
 const ErrorBoundary = () => {
-  const error = useRouteError();
-  console.log("🚀 ~ ErrorBoundary ~ error:", error);
+  const error = useRouteError()
+  console.log("🚀 ~ ErrorBoundary ~ error:", error)
 
   return (
     <section>
@@ -11,12 +12,12 @@ const ErrorBoundary = () => {
       <pre>{error?.message}</pre>
       <Link
         to={"/"}
-        className="p-2 bg-neutral-dark-blue text-neutral-white rounded-md"
+        className="bg-neutral-dark-blue text-neutral-white rounded-md p-2"
       >
         <Button>Back Home</Button>
       </Link>
     </section>
-  );
-};
+  )
+}
 
-export default ErrorBoundary;
+export default ErrorBoundary

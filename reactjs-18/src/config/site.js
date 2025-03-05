@@ -4,7 +4,7 @@ const links = {
   githubAccount: "https://github.com/nemo",
   discord: "https://discord.com/users/nemo",
   calDotCom: "https://cal.com/nemo",
-};
+}
 
 export const siteConfig = {
   name: "NemoShop",
@@ -69,4 +69,4 @@ export const siteConfig = {
       ],
     },
   ],
-};
+}

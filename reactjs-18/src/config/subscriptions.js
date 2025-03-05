@@ -23,4 +23,4 @@ export const storeSubscriptionPlans = [
     stripePriceId: env.STRIPE_PRO_MONTHLY_PRICE_ID,
     price: 20,
   },
-];
+]

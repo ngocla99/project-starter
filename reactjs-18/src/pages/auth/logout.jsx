@@ -1,20 +1,21 @@
-import { useAuth } from "@/providers/auth-provider";
-import { useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom"
+
+import { useAuth } from "@/providers/auth-provider"
 
 const Logout = () => {
-  const { clearToken } = useAuth();
-  const navigate = useNavigate();
+  const { clearToken } = useAuth()
+  const navigate = useNavigate()
 
   const handleLogout = () => {
-    clearToken(); // Clear the authentication token
-    navigate("/", { replace: true });
-  };
+    clearToken() // Clear the authentication token
+    navigate("/", { replace: true })
+  }
 
   setTimeout(() => {
-    handleLogout();
-  }, 3 * 1000);
+    handleLogout()
+  }, 3 * 1000)
 
-  return <>Logout Page</>;
-};
+  return <>Logout Page</>
+}
 
-export default Logout;
+export default Logout

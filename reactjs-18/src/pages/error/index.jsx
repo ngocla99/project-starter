@@ -1,6 +1,5 @@
-
 const Error = () => {
-  throw new Error("Something went wrong!");
-};
+  throw new Error("Something went wrong!")
+}
 
-export default Error;
+export default Error
