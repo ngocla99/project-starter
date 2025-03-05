@@ -7,5 +7,6 @@
   "useTabs": false,
   "arrowParens": "always",
   "singleQuote": false,
-  "endOfLine": "auto"
+  "endOfLine": "auto",
+  "plugins": ["prettier-plugin-tailwindcss"]
 }
